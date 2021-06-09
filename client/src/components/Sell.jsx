@@ -35,7 +35,7 @@ class Sell extends Component {
     // brand에 변경이 있을 경우 brand에 맞는 model을 state.model_option에 저장.
     model_Change = (brand) => {
         this.state.model_option = [];
-        if (brand === 'hyndai') {
+        if (brand === 'hyundai') {
             this.state.model_option.push(
                 { value: "그랜저", label: "그랜저" },
                 { value: "쏘나타", label: "쏘나타" }, 
@@ -274,7 +274,7 @@ class Sell extends Component {
                             <h6>차량 브랜드를 선택해주세요.</h6>
 							<select className="form-control" id="brand" name="brand" value={brand} onChange={appChange}>
 								<option value="0">차량의 브랜드를 선택해주세요</option>
-								<option value="hyndai">현대</option>
+								<option value="hyundai">현대</option>
 								<option value="genesis">제네시스</option>
 								<option value="kia">기아</option>
 								<option value="gm_korea">한국GM</option>
