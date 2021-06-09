@@ -21,7 +21,9 @@ contract CarManager is Ownable{
     
     struct S_Car {
         Car _car;
-        string _identifier;
+        string _brand;
+        string _model;
+        string _carNum; 
         uint _carPrice;
         CarManager.SupplyChainState _state;
     }
@@ -29,10 +31,12 @@ contract CarManager is Ownable{
     mapping(uint => S_Car) public cars;
     uint carIndex;
     
-    function createCar(string memory _identifier, uint _carPrice) public {
+    function createCar(string memory _brand, string memory _model, string memory _carNum, uint _carPrice) public {
         Car car = new Car(this, _carPrice, carIndex);
         cars[carIndex]._car = car;
-        cars[carIndex]._identifier = _identifier;
+        cars[carIndex]._brand = _brand;
+        cars[carIndex]._model = _model;
+        cars[carIndex]._carNum = _carNum;
         cars[carIndex]._carPrice = _carPrice;
         cars[carIndex]._state = SupplyChainState.Created;
         
