@@ -301,6 +301,14 @@ class AddCarToBlockChain extends Component {
 
     }
 
+    // 클릭 이벤트. ==> onClick
+    appClick = () => {
+        // 미입력 값 확인 함수 호출.
+        this.check_input();
+
+        // 여기에 블록체인에 저장하는 함수 추가 예정.
+    }
+
     // 미입력 값 확인 함수.
     check_input = () => {
         // brand가 선택되지 않았을 경우.
@@ -388,7 +396,7 @@ class AddCarToBlockChain extends Component {
 
                     {/* 로그인 기능 선택 박스. */}
                     <div className="div-style1">
-                        <span className="btn btn-primary form-control" onClick={this.appClick}>판매</span>&nbsp; 
+                        <span className="btn btn-primary form-control" onClick={this.handleSubmit}>판매</span>&nbsp; 
                     </div> 
 
                 </div>
