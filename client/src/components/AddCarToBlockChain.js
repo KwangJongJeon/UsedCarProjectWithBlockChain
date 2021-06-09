@@ -9,7 +9,18 @@ import getWeb3 from "../getWeb3";
 import '../App.css';
 
 class AddCarToBlockChain extends Component {
-    state = {loaded: false, cost: 0, itemName: "example_1"};
+    state = {
+        loaded: false,
+        cost: 0,
+        carName: "example_1",
+        brand: '',
+        model: '',
+        car_num: '',
+        description: '',
+        price: '',
+        model_option:[]
+    };
+
     
     componentDidMount = async () => {
         try {
@@ -70,11 +81,30 @@ class AddCarToBlockChain extends Component {
         });
     }
 
+
     handleSubmit = async() => {
         const {cost, carName} = this.state;
         let result = await this.carManager.methods.createCar(carName, cost).send({from: this.accounts[0]});
         console.log(result);
         alert("Send " + cost + "Wei to " + result.events.SupplyChainStep.returnValues._carAddress);
+    }
+
+    
+    // 외부에서 입력값이 들어올 경우 state 값을 변경(모델 제외)
+    appChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        // 브랜드에 변경이 있을 경우.
+        if(e.target.name === 'brand') {
+            this.model_Change(e.target.value);
+        }
+    }
+
+       /* 모델이 변경된 경우.
+       e.target에서 오류가 발생하여 따로 함수를 생성. */
+    appChangeModel = (e) => {
+        this.state.model = e.value
     }
 
     // brand에 변경이 있을 경우 brand에 맞는 model을 state.model_option에 저장.
@@ -268,6 +298,30 @@ class AddCarToBlockChain extends Component {
                 { value: "타이칸", label: "타이칸" });
         }
 
+    }
+
+    // 미입력 값 확인 함수.
+    check_input = () => {
+        // brand가 선택되지 않았을 경우.
+        if (this.state.brand === '') {
+            alert("브랜드를 선택하세요");    
+            return;
+        }
+        // model이 선택되지 않았을 경우.
+        if (this.state.model === '') {
+            alert("모델을 선택하세요");
+            return;
+        }
+        // description이 입력되지 않았을 경우.
+        if (this.state.description === '') {
+            alert("차량 설명을 입력하세요");
+            return;
+        }
+        // price가 입력되지 않았을 경우.
+        if (this.state.price === '') {
+            alert("희망 가격을 입력하세요");
+            return;
+        }
     }
 
     render() {
