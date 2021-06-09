@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
 import CarContract from "../contracts/Car.json";
@@ -326,16 +327,71 @@ class AddCarToBlockChain extends Component {
 
     render() {
         if (!this.state.loaded) {
-            return <div>Loading Web3, accoutns, and contract...</div>;
+            return <div>Loading Web3, accounts, and contract...</div>;
         }
         return (
-            <div className="App">
-                <h1>Car Supply</h1>
-                <h2>Car</h2>
-                <h2>Add Cars</h2>
-                Const in Wei: <input type="text" name="cost" value={this.state.cost} onChange={this.handleInputChange} />
-                Car Identifier: <input type="text" name="carName" value={this.state.carName} onChange={this.handleInputChange} />
-                <button type="button" onClick={this.handleSubmit}>Create new Car</button>
+            <div className="Sell">
+                <div className="container col-xxl-10 px-5 py-5">
+                    <div className="col-lg-4">
+                        <h3>차량 판매 화면</h3>
+                    </div>
+
+                    {/* 차량 브랜드 선택 */}
+                    <div className="div-style1">
+                        <h6>차량 브랜드를 선택해주세요.</h6>
+                        <select className="form-control" id="brand" name="brand" value={this.state.brand} onChange={this.appChange}>
+                        <option value="0">차량의 브랜드를 선택해주세요</option>
+                            <option value="hyundai">현대</option>
+                            <option value="genesis">제네시스</option>
+                            <option value="kia">기아</option>
+                            <option value="gm_korea">한국GM</option>
+                            <option value="renault_samsumg">르노삼성</option>
+                            <option value="ssangyong">쌍용</option>
+                            <option value="benz">벤츠</option>
+                            <option value="bmw">BMW</option>
+                            <option value="audi">아우디</option>
+                            <option value="volkswagen">폭스바겐</option>
+                            <option value="lexus">렉서스</option>
+                            <option value="toyota">도요타</option>
+                            <option value="landrover">랜드로버</option>
+                            <option value="mini">미니</option>
+                            <option value="volvo">볼보</option>
+                            <option value="jaguar">재규어</option>
+                            <option value="jeep">지프</option>
+                            <option value="porsche">포르쉐</option>
+                        </select>
+                    </div>
+
+                    {/* 차량 모델 선택창. */}
+                    <div className="div-style1">
+                        <h6>차량 모델을 선택해주세요.</h6>
+                        <Select className="form-control" id="model" name="model" onChange={this.appChangeModel} options={this.state.model_option}></Select>
+                    </div>
+
+                    {/* 차량 번호 입력창. */}
+                    <div className="div-style1">
+                        <h6>차량 번호를 입력해주세요.</h6>
+                        <input type="text" className="form-control" placeholder="차량 번호" name="car_num" id="car_num" value={this.state.car_num} onChange={this.appChange}/>
+                    </div>
+
+                    {/* 차량 설명 입력창 */}
+                    <div className="div-style1">
+                        <h6>차량 설명을 입력해주세요.</h6>
+                        <textarea type="text" className="textarea-style" placeholder="차량 설명" name="description" id="description" value={this.state.description} onChange={this.appChange}/>
+                    </div>
+
+                    {/* 희망 가격 입력창. */}
+                    <div className="div-style1">
+                        <h6>희망 가격을 입력해주세요.</h6>
+                        <input type="text" className="form-control" placeholder="희망 가격" name="price" id="price" value={this.state.price} onChange={this.appChange}/>
+                    </div>
+
+                    {/* 로그인 기능 선택 박스. */}
+                    <div className="div-style1">
+                        <span className="btn btn-primary form-control" onClick={this.appClick}>판매</span>&nbsp; 
+                    </div> 
+
+                </div>
             </div>
         )
     }
