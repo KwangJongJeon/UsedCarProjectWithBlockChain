@@ -37,6 +37,8 @@ class ShowBookList extends Component {
       bookList = books.map((book, k) =>
         <BookCard book={book} key={k} />
       );
+      console.log("books: " + books)
+      console.log(bookList.prop);
     }
 
     return (

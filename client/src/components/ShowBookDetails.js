@@ -6,9 +6,6 @@ import axios from 'axios';
 class ShowBookDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            book: {}
-        };
     }
     
     componentDidMount() {
