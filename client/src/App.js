@@ -28,7 +28,7 @@ class App extends Component {
           <Route path='/create-car' component={AddCarToBlockChain} />
           <Route path='/create-car-proto' component={AddCarToBlockChainProto} />
 
-          <Route path='/sell-car' component={Sell} />
+          <Route path='/sell-car' component={AddCarToBlockChain} />
           <Route path='/search-part' component={SearchPart} />
           <Route path='/add-coin' component={ChargeCoin} />
           <Route path='/login' component={LogIn} />

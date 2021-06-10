@@ -17,7 +17,6 @@ class AddCarToBlockChain extends Component {
         brand: '',
         model: '',
         car_num: '',
-        description: '',
         price: '',
         model_option:[]
     };
@@ -77,17 +76,41 @@ class AddCarToBlockChain extends Component {
         const value = target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;
 
+        console.log(event);
+
         this.setState({
             [name]: value
         });
     }
 
+    // state = {
+    //     loaded: false,
+    //     cost: 0,
+    //     carName: "example_1",
+    //     brand: '',
+    //     model: '',
+    //     car_num: '',
+    //     description: '',
+    //     price: '',
+    //     model_option:[]
+    // };
 
     handleSubmit = async() => {
-        const {cost, carName} = this.state;
-        let result = await this.carManager.methods.createCar(carName, cost).send({from: this.accounts[0]});
-        console.log(result);
-        alert("Send " + cost + "Wei to " + result.events.SupplyChainStep.returnValues._carAddress);
+        if(!this.check_input()) {
+            const {brand, model, car_num, price} = this.state;
+            let result = await this.carManager.methods.createCar(brand, model, car_num, price).send({from: this.accounts[0]});
+            console.log(result);
+            alert("Send " + price + "Wei to " + result.events.SupplyChainStep.returnValues._carAddress);
+        }
+        
+    }
+
+    // 클릭 이벤트. ==> onClick
+    appClick = () => {
+        // 미입력 값 확인 함수 호출.
+        this.check_input();
+
+        // 여기에 블록체인에 저장하는 함수 추가 예정.
     }
 
     
@@ -314,22 +337,22 @@ class AddCarToBlockChain extends Component {
         // brand가 선택되지 않았을 경우.
         if (this.state.brand === '') {
             alert("브랜드를 선택하세요");    
-            return;
+            return false;
         }
         // model이 선택되지 않았을 경우.
         if (this.state.model === '') {
             alert("모델을 선택하세요");
-            return;
+            return false;
         }
         // description이 입력되지 않았을 경우.
         if (this.state.description === '') {
             alert("차량 설명을 입력하세요");
-            return;
+            return false;
         }
         // price가 입력되지 않았을 경우.
         if (this.state.price === '') {
             alert("희망 가격을 입력하세요");
-            return;
+            return false;
         }
     }
 
@@ -382,11 +405,12 @@ class AddCarToBlockChain extends Component {
                         <input type="text" className="form-control" placeholder="차량 번호" name="car_num" id="car_num" value={this.state.car_num} onChange={this.appChange}/>
                     </div>
 
+                    {/* 잠깐 제외해둠 (2021-06-09) */}
                     {/* 차량 설명 입력창 */}
-                    <div className="div-style1">
+                    {/* <div className="div-style1">
                         <h6>차량 설명을 입력해주세요.</h6>
                         <textarea type="text" className="textarea-style" placeholder="차량 설명" name="description" id="description" value={this.state.description} onChange={this.appChange}/>
-                    </div>
+                    </div> */}
 
                     {/* 희망 가격 입력창. */}
                     <div className="div-style1">
