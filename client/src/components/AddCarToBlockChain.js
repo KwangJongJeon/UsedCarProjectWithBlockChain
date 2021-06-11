@@ -118,6 +118,12 @@ class AddCarToBlockChain extends Component {
             formData.append('carPrice', this.state.carPrice);
             formData.append('carImg', this.state.carImg);
             formData.append('description', this.state.description);
+
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            }
             console.log(formData);
 
             // const data = {
@@ -131,7 +137,7 @@ class AddCarToBlockChain extends Component {
             // console.log("data: " + data);
 
             axios
-                .post('http://localhost:8082/api/sellCarPosts', formData)
+                .post('http://localhost:8082/api/sellCarPosts', formData, config)
                 .then(res => {
                     this.setState({
                         brand: '',
@@ -141,7 +147,7 @@ class AddCarToBlockChain extends Component {
                         carImg: '',
                         description: '',
                     })
-                    this.props.history.push('/');
+                    alert("The file is successfully uploaded");
                 })
                 .catch(err => {
                     console.log(err);
