@@ -62,7 +62,7 @@ class ShowCarList extends Component {
                     </div>
                 </div>
 
-                <div className="list">
+                <div className="list px-4">
                     {carList}
                 </div>
             </div>
