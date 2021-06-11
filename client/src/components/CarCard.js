@@ -5,19 +5,19 @@ import '../App.css'
 const CarCard = (props) => {
     const car = props.car;
     console.log("cars in carCard: " + car)
-
+    const imgSrc = "http://localhost:8082/images/" + car.carImg;
     return (
         <div className="car-Container">
-            <img src= "https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3" alt=""/>
+            <img width="400" height="400" src= {imgSrc}  alt=""/>
             <div className="desc">
-                <h3>{car._brand}</h3>
+                <h3>{car.brand}</h3>
                 <h2>
-                    <Link to={`/show-car/${car._index}`}>
-                        {car._model}
+                    <Link to={`/show-car/${car._id}`}>
+                        {car.model}
                     </Link>
                 </h2>
-                <h3>{car._brand}</h3>
-                <h3>{car._carPrice}</h3>
+                <h3>{car.brand}</h3>
+                <h3>{car.description}</h3>
             </div>
         </div>
     )

@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import AddCarToBlockChain from './AddCarToBlockChain';
 import ShowBlockChainList from './ShowBlockChainList';
 import ShowBlockChainDetails from './ShowBlockChainDetails';
+import ShowCarList from './ShowCarList';
 
 
 export {
@@ -24,5 +25,6 @@ export {
     SignUp,
     AddCarToBlockChain,
     ShowBlockChainList,
-    ShowBlockChainDetails
+    ShowBlockChainDetails,
+    ShowCarList
 }

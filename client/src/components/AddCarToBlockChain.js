@@ -148,6 +148,7 @@ class AddCarToBlockChain extends Component {
                         description: '',
                     })
                     alert("The file is successfully uploaded");
+
                 })
                 .catch(err => {
                     console.log(err);

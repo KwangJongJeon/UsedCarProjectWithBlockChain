@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { NavBar, HomePage } from './components';
-import { AddCarToBlockChain, ShowBlockChainList, SearchPart, ChargeCoin } from './components';
+import { AddCarToBlockChain, ShowBlockChainList, SearchPart, ChargeCoin, ShowCarList} from './components';
 import { LogIn, SignUp } from './components';
 import './App.css';
 
@@ -25,7 +25,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
 
-          <Route path='/buy-car' component={ShowBlockChainList} />
+          <Route path='/buy-car' component={ShowCarList} />
           <Route path="/buy-car/:id" component={ShowBlockChainDetails}/>
           <Route path='/sell-car' component={AddCarToBlockChain} />
           <Route path='/search-part' component={SearchPart} />
