@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { NavBar, HomePage } from './components';
-import { Sell, SearchPart, ChargeCoin } from './components';
+import { AddCarToBlockChain, ShowBlockChainList, SearchPart, ChargeCoin } from './components';
 import { LogIn, SignUp } from './components';
 import './App.css';
 
@@ -10,8 +10,7 @@ import CreateBook from './components/CreateBook.js';
 import ShowBookList from './components/ShowBookList';
 import ShowBookDetails from './components/ShowBookDetails';
 import UpdateBookInfo from './components/UpdateBookInfo';
-import AddCarToBlockChain from './components/AddCarToBlockChain'
-import AddCarToBlockChainProto from './components/AddCarToBlockChainProto'
+import ShowBlockChainDetails from './components/ShowBlockChainDetails'
 
 import {SellPage} from './components';
 
@@ -25,9 +24,9 @@ class App extends Component {
         <hr/>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/create-car' component={AddCarToBlockChain} />
-          <Route path='/create-car-proto' component={AddCarToBlockChainProto} />
 
+          <Route path='/buy-car' component={ShowBlockChainList} />
+          <Route path="/buy-car/:id" component={ShowBlockChainDetails}/>
           <Route path='/sell-car' component={AddCarToBlockChain} />
           <Route path='/search-part' component={SearchPart} />
           <Route path='/add-coin' component={ChargeCoin} />
@@ -40,7 +39,7 @@ class App extends Component {
           <Route path='/book-list' component={ShowBookList}/>
         </Switch>
       </Router>
-    )
+    ) 
   }
 }
 

@@ -7,7 +7,10 @@ import SellPage from './SellPage.Jsx'
 import SearchPart from './SearchPart';
 import LogIn from './Login';
 import SignUp from './SignUp';
-import AddCarToBlockChainProto from './AddCarToBlockChainProto'
+import AddCarToBlockChain from './AddCarToBlockChain';
+import ShowBlockChainList from './ShowBlockChainList';
+import ShowBlockChainDetails from './ShowBlockChainDetails';
+
 
 export {
     NavBar,
@@ -19,5 +22,7 @@ export {
     SearchPart,
     LogIn,
     SignUp,
-    AddCarToBlockChainProto
+    AddCarToBlockChain,
+    ShowBlockChainList,
+    ShowBlockChainDetails
 }

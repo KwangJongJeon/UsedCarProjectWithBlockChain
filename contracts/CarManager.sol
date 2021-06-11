@@ -29,7 +29,9 @@ contract CarManager is Ownable{
     }
     
     mapping(uint => S_Car) public cars;
-    uint carIndex;
+    uint public carIndex = 0;
+
+
     
     function createCar(string memory _brand, string memory _model, string memory _carNum, uint _carPrice) public {
         Car car = new Car(this, _carPrice, carIndex);
@@ -60,5 +62,7 @@ contract CarManager is Ownable{
         
         emit SupplyChainStep(_carIndex, uint(cars[carIndex]._state), address(cars[_carIndex]._car));
     }
+
+
     
 }

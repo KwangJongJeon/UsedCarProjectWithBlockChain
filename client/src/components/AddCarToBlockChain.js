@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
@@ -8,18 +8,27 @@ import CarManagerContract from "../contracts/CarManager.json";
 import getWeb3 from "../getWeb3";
 
 import '../App.css';
+import axios from 'axios';
 
 class AddCarToBlockChain extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+    
     state = {
         loaded: false,
         cost: 0,
         carName: "example_1",
         brand: '',
         model: '',
-        car_num: '',
-        price: '',
+        carNum: '',
+        carPrice: '',
+        carImg: '',
+        description: '',
         model_option:[]
     };
+    
 
     
     componentDidMount = async () => {
@@ -89,28 +98,61 @@ class AddCarToBlockChain extends Component {
     //     carName: "example_1",
     //     brand: '',
     //     model: '',
-    //     car_num: '',
+    //     carNum: '',
     //     description: '',
     //     price: '',
     //     model_option:[]
     // };
 
-    handleSubmit = async() => {
+    handleSubmit = async (e) => {
         if(!this.check_input()) {
-            const {brand, model, car_num, price} = this.state;
-            let result = await this.carManager.methods.createCar(brand, model, car_num, price).send({from: this.accounts[0]});
+            const {brand, model, carNum, carPrice} = this.state;
+            let result = await this.carManager.methods.createCar(brand, model, carNum, carPrice).send({from: this.accounts[0]});
             console.log(result);
-            alert("Send " + price + "Wei to " + result.events.SupplyChainStep.returnValues._carAddress);
+            alert("Send " + carPrice + "Wei to " + result.events.SupplyChainStep.returnValues._carAddress);
+
+            const formData = new FormData();
+            formData.append('brand', this.state.brand);
+            formData.append('model', this.state.model);
+            formData.append('carNum', this.state.carNum);
+            formData.append('carPrice', this.state.carPrice);
+            formData.append('carImg', this.state.carImg);
+            formData.append('description', this.state.description);
+            console.log(formData);
+
+            // const data = {
+            //     brand: this.state.brand,
+            //     model: this.state.model,
+            //     carNum:this.state.carNum,
+            //     carPrice: this.state.carPrice,
+            //     carImg: this.state.carImg,
+            //     description: this.state.description
+            // };
+            // console.log("data: " + data);
+
+            axios
+                .post('http://localhost:8082/api/sellCarPosts', formData)
+                .then(res => {
+                    this.setState({
+                        brand: '',
+                        model: '',
+                        carNum: '',
+                        carPrice: '',
+                        carImg: '',
+                        description: '',
+                    })
+                    this.props.history.push('/');
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
         
     }
 
-    // 클릭 이벤트. ==> onClick
-    appClick = () => {
-        // 미입력 값 확인 함수 호출.
-        this.check_input();
-
-        // 여기에 블록체인에 저장하는 함수 추가 예정.
+    handlePhoto = (e) => {
+        this.setState({ carImg: e.target.files[0]});
+        console.log("e.target.file: " + e.target.files[0]);
     }
 
     
@@ -402,20 +444,25 @@ class AddCarToBlockChain extends Component {
                     {/* 차량 번호 입력창. */}
                     <div className="div-style1">
                         <h6>차량 번호를 입력해주세요.</h6>
-                        <input type="text" className="form-control" placeholder="차량 번호" name="car_num" id="car_num" value={this.state.car_num} onChange={this.appChange}/>
+                        <input type="text" className="form-control" placeholder="차량 번호" name="carNum" id="carNum" value={this.state.carNum} onChange={this.appChange}/>
                     </div>
 
                     {/* 잠깐 제외해둠 (2021-06-09) */}
                     {/* 차량 설명 입력창 */}
-                    {/* <div className="div-style1">
+                    <div className="div-style1">
                         <h6>차량 설명을 입력해주세요.</h6>
                         <textarea type="text" className="textarea-style" placeholder="차량 설명" name="description" id="description" value={this.state.description} onChange={this.appChange}/>
-                    </div> */}
+                    </div>
+
+                    <div className="div-style1">
+                        <h6>차량 사진을 선택해주세요.</h6> 
+                        <input type="file" accept=".png, .jpg, .jpeg" name="carImg" onChange={this.handlePhoto}/>
+                    </div>
 
                     {/* 희망 가격 입력창. */}
                     <div className="div-style1">
                         <h6>희망 가격을 입력해주세요.</h6>
-                        <input type="text" className="form-control" placeholder="희망 가격" name="price" id="price" value={this.state.price} onChange={this.appChange}/>
+                        <input type="text" className="form-control" placeholder="희망 가격" name="carPrice" id="carPrice" value={this.state.price} onChange={this.appChange}/>
                     </div>
 
                     {/* 로그인 기능 선택 박스. */}
