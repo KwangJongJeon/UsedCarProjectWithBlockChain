@@ -19,12 +19,16 @@ contract CarManager is Ownable{
     
     enum SupplyChainState {Created, Paid, Delivered}
     
+    // 2021-06-12
+    // _carIndexInStruct는 웹에서 값을 가져올 때 사용할 용도로 만든 편의성 변수로써
+    // 나중에 시간이 난다면 보다 좋은 구조로 바꿀 필요성이 있음
     struct S_Car {
         Car _car;
         string _brand;
         string _model;
         string _carNum; 
         uint _carPrice;
+        bool _initialMaintenanced;
         CarManager.SupplyChainState _state;
     }
     
@@ -40,10 +44,19 @@ contract CarManager is Ownable{
         cars[carIndex]._model = _model;
         cars[carIndex]._carNum = _carNum;
         cars[carIndex]._carPrice = _carPrice;
+        cars[carIndex]._initialMaintenanced = false;
         cars[carIndex]._state = SupplyChainState.Created;
         
         emit SupplyChainStep(carIndex, uint(cars[carIndex]._state), address(car));
         carIndex++;
+    }
+
+    function setMaintenanceCarTrue(uint _carIndex) public {
+        cars[_carIndex]._initialMaintenanced = true;
+    }
+
+    function setMaintenanceCarFalse(uint _carIndex) public {
+        cars[_carIndex]._initialMaintenanced = false;
     }
     
     event SupplyChainStep(uint _carIndex, uint _step, address _carAddress);

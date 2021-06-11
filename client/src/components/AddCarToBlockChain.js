@@ -18,8 +18,6 @@ class AddCarToBlockChain extends Component {
     
     state = {
         loaded: false,
-        cost: 0,
-        carName: "example_1",
         brand: '',
         model: '',
         carNum: '',

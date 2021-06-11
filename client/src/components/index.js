@@ -11,7 +11,8 @@ import AddCarToBlockChain from './AddCarToBlockChain';
 import ShowBlockChainList from './ShowBlockChainList';
 import ShowBlockChainDetails from './ShowBlockChainDetails';
 import ShowCarList from './ShowCarList';
-
+import CarMaintenancePage from './CarMaintenancePage'
+import CarMaintenanceDetails from './CarMaintenanceDetails'
 
 export {
     NavBar,
@@ -26,5 +27,7 @@ export {
     AddCarToBlockChain,
     ShowBlockChainList,
     ShowBlockChainDetails,
-    ShowCarList
+    ShowCarList,
+    CarMaintenancePage,
+    CarMaintenanceDetails
 }

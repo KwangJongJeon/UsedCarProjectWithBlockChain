@@ -22,5 +22,6 @@ const CarCard = (props) => {
         </div>
     )
 };
+  
 
 export default CarCard;

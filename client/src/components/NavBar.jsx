@@ -14,10 +14,11 @@ class NavBar extends Component {
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" className="nav-link px-2 text-white">Home</a></li>  
-            <li><a href="/buy-car" className="nav-link px-2 text-white">Buy</a></li>
-            <li><a href="/sell-car" className="nav-link px-2 text-white">Sell</a></li>
-            <li><a href="/add-coin" className="nav-link px-2 text-white">Coin</a></li>
-            <li><a href="/search-part" className="nav-link px-2 text-white">Part</a></li>
+            <li><a href="/buy-car" className="nav-link px-2 text-white">구매</a></li>
+            <li><a href="/sell-car" className="nav-link px-2 text-white">판매</a></li>
+            <li><a href="/maintenance-car" className="nav-link px-2 text-white">정비</a></li>
+            <li><a href="/add-coin" className="nav-link px-2 text-white">코인충전</a></li>
+            <li><a href="/search-part" className="nav-link px-2 text-white">부품검색</a></li>
           </ul>
 
           <form>
