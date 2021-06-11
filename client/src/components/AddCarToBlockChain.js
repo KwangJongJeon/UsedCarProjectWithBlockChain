@@ -116,6 +116,7 @@ class AddCarToBlockChain extends Component {
             formData.append('carPrice', this.state.carPrice);
             formData.append('carImg', this.state.carImg);
             formData.append('description', this.state.description);
+            formData.append('blockChainAddress', result.events.SupplyChainStep.returnValues._carAddress)
 
             const config = {
                 headers: {

@@ -37,11 +37,11 @@ class ShowCarList extends Component {
         else {
             console.log("cars: ",cars)
             carList = cars.map((car, k) => {
-                if(car.IsInitialInspected) {
+                if(car.isInitialInspected) {
                     return <CarCard car={car} key={k} />
                 }
                 else {
-                    return <h1>Hello</h1>
+                    return
                 }
             });
         }

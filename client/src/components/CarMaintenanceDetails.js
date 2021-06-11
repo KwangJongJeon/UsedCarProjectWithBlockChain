@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import CarContract from "../contracts/Car.json";
 import CarManagerContract from "../contracts/CarManager.json";
@@ -85,10 +86,23 @@ class CarMaintenanceDetails extends Component {
 
     handleSubmit = async (e) => {
         if(!this.check_input()) {
+            // save check receipt to BlockChain
             const { mileage, VINStatus, tuningStatus, changeOfPurpose, specialHistory, color } = this.state;
             let result = await this.car.methods.basicCarInfoCheck(mileage, VINStatus, tuningStatus, specialHistory, changeOfPurpose, color).send({from: this.accounts[0]});
             console.log(result);
             alert("basic check is completed!")
+
+            // set post's isInitialInspected true
+            axios
+                .put('http://localhost:8082/api/sellCarPosts/setCheckTrue/' + this.props.match.params.id)
+                .then(res => {
+                    console.log("res--------------------------")
+                    console.log(res);
+                    console.log("-----------------------------")
+                })
+                .catch(err => {
+                    console.log("Error on handleSubmit in CarMaintenanceDetails ")
+                })
         }
     }
 
