@@ -24,6 +24,7 @@ class UpdateCarPostInfo extends Component {
                 this.setState({
                     brand: res.data.brand,
                     model: res.data.model,
+                    title: res.data.title,
                     carNum: res.data.carNum,
                     carPrice: res.data.carPrice,
                     description: res.data.description
@@ -35,7 +36,7 @@ class UpdateCarPostInfo extends Component {
     };
 
     onChange = e => {
-        this.setState({ [e.target.num]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     };
 
     onSubmit = e => {
@@ -51,7 +52,7 @@ class UpdateCarPostInfo extends Component {
         };
 
         axios
-            .put('http://localhost:8082/api/books/' + this.props.match.params.id, data)
+            .put('http://localhost:8082/api/sellCarPosts/' + this.props.match.params.id, data)
             .then(res => {
                 this.props.history.push('/show-car/' + this.props.match.params.id);
             })
@@ -82,10 +83,10 @@ class UpdateCarPostInfo extends Component {
                     <div className="col-md-8 m-auto">
                         <form noValidate onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                <label htmlFor="title">Title</label>
+                                <label htmlFor="title">제목</label>
                                 <input
                                     type='text'
-                                    placeholder='Title of the book'
+                                    placeholder='게시글 제목'
                                     name='title'
                                     className='form-control'
                                     value={this.state.title}
@@ -94,34 +95,10 @@ class UpdateCarPostInfo extends Component {
                             </div>
                             <br />
                             <div className='form-group'>
-                                <label htmlFor="isbn">ISBN</label>
+                                <label htmlFor="isbn">내용</label>
                                 <input
                                     type='text'
-                                    placeholder='ISBN'
-                                    name='isbn'
-                                    className='form-control'
-                                    value={this.state.isbn}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-
-                            <div className='form-group'>
-                                <label htmlFor="author">Author</label>
-                                <input
-                                    type='text'
-                                    placeholder='Author'
-                                    name='author'
-                                    className='form-control'
-                                    value={this.state.author}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-
-                            <div className='form-group'>
-                                <label htmlFor="description">Description</label>
-                                <input
-                                    type='text'
-                                    placeholder='Describe this book'
+                                    placeholder='내용'
                                     name='description'
                                     className='form-control'
                                     value={this.state.description}
@@ -130,24 +107,50 @@ class UpdateCarPostInfo extends Component {
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor="published_date">Published Date</label>
+                                <label htmlFor="carPrice">가격</label>
                                 <input
-                                    type='date'
-                                    placeholder='published_date'
-                                    name='published_date'
+                                    type='text'
+                                    placeholder='가격'
+                                    name='carPrice'
                                     className='form-control'
-                                    value={this.state.published_date}
+                                    value={this.state.carPrice}
                                     onChange={this.onChange}
                                 />
                             </div>
+
                             <div className='form-group'>
-                                <label htmlFor="publisher">Publisher</label>
+                                <label htmlFor="brand">브랜드</label>
                                 <input
                                     type='text'
-                                    placeholder='Publisher of this Book'
-                                    name='publisher'
+                                    placeholder='차량번호'
+                                    name='brand'
                                     className='form-control'
-                                    value={this.state.publisher}
+                                    value={this.state.brand}
+                                    onChange={this.onChange}
+                                    readOnly
+                                />
+                            </div>
+
+                            <div className='form-group'>
+                                <label htmlFor="model">모델</label>
+                                <input
+                                    type='text'
+                                    placeholder='모델'
+                                    name='model'
+                                    className='form-control'
+                                    value={this.state.model}
+                                    onChange={this.onChange}
+                                    readOnly
+                                />
+                            </div>
+                            <div className='form-group'>
+                                <label htmlFor="carNum">차량번호</label>
+                                <input
+                                    type='text'
+                                    placeholder='carNum'
+                                    name='carNum'
+                                    className='form-control'
+                                    value={this.state.carNum}
                                     onChange={this.onChange}
                                 />
                             </div>
@@ -160,3 +163,5 @@ class UpdateCarPostInfo extends Component {
         )
     }
 }
+
+export default UpdateCarPostInfo;
