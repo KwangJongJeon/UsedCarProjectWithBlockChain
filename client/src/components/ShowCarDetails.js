@@ -42,7 +42,6 @@ class ShowCarDetails extends Component {
     render() {
         const car = this.state.car;
         console.log("contract car: ");
-        console.log(this.car);
         const imgSrc = "http://localhost:8082/images/" + car.carImg
         let carItem = <div>
         <table className="table table-hover table-dark">
@@ -119,12 +118,12 @@ class ShowCarDetails extends Component {
 
                     <div className="row">
                         <div className="col-md-6">
-                            <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onDeleteClick.bind(this,car._id)}>Delete Car</button><br />
+                            <button type="button" className="btn btn-outline-danger btn-lg btn-block" onClick={this.onDeleteClick.bind(this,car._id)}>게시글 삭제</button><br />
                         </div>
 
                         <div className="col-md-6">
                             <Link to={`/edit-car/${car._id}`} className="btn btn-outline-info btn-lg btn-block">
-                                Edit CarPost
+                                게시글 수정
                             </Link> 
                             <br />
                         </div>

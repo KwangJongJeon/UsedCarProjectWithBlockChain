@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { NavBar, HomePage } from './components';
 import { AddCarToBlockChain, ShowCarDetails, SearchPart, ChargeCoin, ShowCarList} from './components';

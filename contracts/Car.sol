@@ -82,8 +82,8 @@ contract Car {
     function getCarInfo() public view returns(uint, string memory, string memory, string memory, string memory, string memory) {
         return (
             carInfo.mileage,
+            carInfo.VINStatus,
             carInfo.tuningStatus,
-            carInfo.specialHistory,
             carInfo.specialHistory,
             carInfo.changeOfPurpose,
             carInfo.color
