@@ -13,6 +13,7 @@ import ShowBlockChainDetails from './ShowBlockChainDetails';
 import ShowCarList from './ShowCarList';
 import CarMaintenancePage from './CarMaintenancePage'
 import CarMaintenanceDetails from './CarMaintenanceDetails'
+import ShowCarDetails from './ShowCarDetails'
 
 export {
     NavBar,
@@ -29,5 +30,6 @@ export {
     ShowBlockChainDetails,
     ShowCarList,
     CarMaintenancePage,
-    CarMaintenanceDetails
+    CarMaintenanceDetails,
+    ShowCarDetails
 }

@@ -12,10 +12,6 @@ import axios from 'axios';
 
 class AddCarToBlockChain extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-    
     state = {
         loaded: false,
         brand: '',
@@ -23,6 +19,7 @@ class AddCarToBlockChain extends Component {
         carNum: '',
         carPrice: '',
         carImg: '',
+        title: '',
         description: '',
         model_option:[]
     };
@@ -115,6 +112,7 @@ class AddCarToBlockChain extends Component {
             formData.append('carNum', this.state.carNum);
             formData.append('carPrice', this.state.carPrice);
             formData.append('carImg', this.state.carImg);
+            formData.append('title', this.state.title);
             formData.append('description', this.state.description);
             formData.append('blockChainAddress', result.events.SupplyChainStep.returnValues._carAddress)
 
@@ -450,8 +448,13 @@ class AddCarToBlockChain extends Component {
                     {/* 차량 번호 입력창. */}
                     <div className="div-style1">
                         <h6>차량 번호를 입력해주세요.</h6>
-                        <input type="text" className="form-control" placeholder="차량 번호" name="carNum" id="carNum" value={this.state.carNum} onChange={this.appChange}/>
+                        <input type="text" className="form-control" placeholder="000가 0000" name="carNum" id="carNum" value={this.state.carNum} onChange={this.appChange}/>
                     </div>
+
+                    <div className="div-style1">
+                        <h6>제목을 입력해주세요</h6>
+                        <input type="text" className="form-control" placeholder="제목" name="title" id="title" value={this.state.title} onChange={this.appChange}/>
+                    </div> 
 
                     {/* 잠깐 제외해둠 (2021-06-09) */}
                     {/* 차량 설명 입력창 */}
@@ -468,7 +471,7 @@ class AddCarToBlockChain extends Component {
                     {/* 희망 가격 입력창. */}
                     <div className="div-style1">
                         <h6>희망 가격을 입력해주세요.</h6>
-                        <input type="text" className="form-control" placeholder="희망 가격" name="carPrice" id="carPrice" value={this.state.price} onChange={this.appChange}/>
+                        <input type="text" className="form-control" placeholder="희망 가격(Wei)" name="carPrice" id="carPrice" value={this.state.price} onChange={this.appChange}/>
                     </div>
 
                     {/* 로그인 기능 선택 박스. */}

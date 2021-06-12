@@ -78,6 +78,17 @@ contract Car {
     
     function addCarComponentMaintenanceReceipt(string memory componentName, string memory status) public{
     }
+
+    function getCarInfo() public view returns(uint, string memory, string memory, string memory, string memory, string memory) {
+        return (
+            carInfo.mileage,
+            carInfo.tuningStatus,
+            carInfo.specialHistory,
+            carInfo.specialHistory,
+            carInfo.changeOfPurpose,
+            carInfo.color
+        );
+    }
     
 
     receive() external payable {

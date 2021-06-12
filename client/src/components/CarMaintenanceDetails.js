@@ -11,9 +11,7 @@ import getWeb3 from "../getWeb3";
 import MaintenanceItem from './MaintenanceItem'
 
 class CarMaintenanceDetails extends Component {
-    constructor(props) {
-        super(props);
-    }
+
 
     state = {
         loaded: false,
@@ -145,32 +143,32 @@ class CarMaintenanceDetails extends Component {
                     <hr/>
                     <form>
                         <div className = "mb-3">
-                            <label for="mileage" className="form-label">주행 거리</label>
+                            <label htmlFor="mileage" className="form-label">주행 거리</label>
                             <input type="text" className="form-control" name="mileage" id="mileage" placeholder="주행 거리" value={this.state.mileage} onChange={this.handleChange}/>
                         </div>
 
                         <div className = "mb-3">
-                            <label for="VINStatus" className="form-label">차대번호 상태</label>
+                            <label htmlFor="VINStatus" className="form-label">차대번호 상태</label>
                             <input type="text" className="form-control" name="VINStatus" id="VINStatus" placeholder="차대번호 상태" value={this.state.VINStatus} onChange={this.handleChange}/>
                         </div>
 
                         <div className = "mb-3">
-                            <label for="tuningStatus" className="form-label">튜닝 상태</label>
+                            <label htmlFor="tuningStatus" className="form-label">튜닝 상태</label>
                             <input type="text" className="form-control" name="tuningStatus" id="tuningStatus" placeholder="튜닝 상태" value={this.state.tuningStatus} onChange={this.handleChange}/>
                         </div>
 
                         <div className = "mb-3">
-                            <label for="specialHistory" className="form-label">특별 이력</label>
+                            <label htmlFor="specialHistory" className="form-label">특별 이력</label>
                             <input type="text" className="form-control" name="specialHistory" id="specialHistory" placeholder="특별 이력" value={this.state.specialHistory} onChange={this.handleChange}/>
                         </div>
 
                         <div className = "mb-3">
-                            <label for="changeOfPurpose" className="form-label">용도 변경</label>
+                            <label htmlFor="changeOfPurpose" className="form-label">용도 변경</label>
                             <input type="text" className="form-control" name="changeOfPurpose" id="changeOfPurpose" placeholder="용도 변경" value={this.state.changeOfPurpose} onChange={this.handleChange}/>
                         </div>
 
                         <div className = "mb-3">
-                            <label for="mileage" className="form-label">색상</label>
+                            <label htmlFor="mileage" className="form-label">색상</label>
                             <input type="text" className="form-control" name="color" id="color" placeholder="색상" value={this.state.color} onChange={this.handleChange}/>
                         </div>
                         <br/>

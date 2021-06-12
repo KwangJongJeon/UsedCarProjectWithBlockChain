@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { NavBar, HomePage } from './components';
-import { AddCarToBlockChain, ShowBlockChainList, SearchPart, ChargeCoin, ShowCarList} from './components';
+import { AddCarToBlockChain, ShowCarDetails, SearchPart, ChargeCoin, ShowCarList} from './components';
 import { CarMaintenancePage, CarMaintenanceDetails } from './components';
 import { LogIn, SignUp } from './components';
 import './App.css';
@@ -14,6 +14,7 @@ import UpdateBookInfo from './components/UpdateBookInfo';
 import ShowBlockChainDetails from './components/ShowBlockChainDetails'
 
 import {SellPage} from './components';
+import MaintenanceReceipt from './components/MaintenanceReceipt';
 
 
 
@@ -25,20 +26,20 @@ class App extends Component {
         <hr/>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/buy-car-test' component={ShowBlockChainList}/>
           <Route path='/buy-car' component={ShowCarList} />
-          <Route path="/buy-car/:id" component={ShowBlockChainDetails}/>
+          <Route exact path="/show-car/:id" component={ShowCarDetails}/>
+          <Route path="/show-car/maintenance-receipt/:id" component={MaintenanceReceipt}/>
           <Route path='/sell-car' component={AddCarToBlockChain} />
           <Route path='/search-part' component={SearchPart} />
           <Route path='/add-coin' component={ChargeCoin} />
           <Route exact path='/maintenance-car' component={CarMaintenancePage}/>
-          <Route path='/maintenance-car/:id' component={CarMaintenanceDetails}/>
+          <Route exact path='/maintenance-car/:id' component={CarMaintenanceDetails}/>
           <Route path='/login' component={LogIn} />
           <Route path='/sign-up' component={SignUp} />
 
           <Route path='/create-book' component={CreateBook} />
           <Route path='/edit-book/:id' component={UpdateBookInfo} />
-          <Route path='/show-book/:id' component={ShowBookDetails} />
+          <Route exact path='/show-book/:id' component={ShowBookDetails} />
           <Route path='/book-list' component={ShowBookList}/>
         </Switch>
       </Router>

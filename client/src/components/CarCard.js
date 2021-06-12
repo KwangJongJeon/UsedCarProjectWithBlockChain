@@ -10,14 +10,12 @@ const CarCard = (props) => {
         <div className="car-Container">
             <img width="400" height="400" src= {imgSrc}  alt=""/>
             <div className="desc">
-                <h3>{car.brand}</h3>
-                <h2>
-                    <Link to={`/show-car/${car._id}`}>
-                        {car.model}
-                    </Link>
-                </h2>
-                <h3>{car.brand}</h3>
-                <h3>{car.description}</h3>
+                <p>{car.brand} - {car.model}</p>
+                <p>작성일: {car.updated_date}</p>
+                <Link to={`/show-car/${car._id}`}>
+                    <h2>{car.title}</h2>
+                </Link>
+                <p>{car.description}</p>
             </div>
         </div>
     )
