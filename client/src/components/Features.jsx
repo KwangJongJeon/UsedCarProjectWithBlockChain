@@ -37,9 +37,6 @@ class Features extends Component {
                                 <div>
                                     <h2>보안성</h2>
                                     <p>데이터를 변조할 수 없는 보안성을 가지고 있으며, 시스템이 분산 서버의 특징을 가지기에 높은 수준의 시스템 보안성을 제공합니다.</p>
-                                    <a href="#" className="btn btn-primary">
-                                        Primary button
-                                    </a>
                                 </div>
                             </div>
                         </div>

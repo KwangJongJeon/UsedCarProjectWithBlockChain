@@ -144,7 +144,7 @@ class CarMaintenancePage extends Component {
         return (
             <div className="ShowMaintenanceCarList">
                 <h5>차량 정비 리스트</h5>
-                <div class="list-group">
+                <div className="list-group">
                     {carList}
                 </div>
             </div>      
