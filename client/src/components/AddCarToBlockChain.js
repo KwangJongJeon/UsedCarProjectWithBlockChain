@@ -49,7 +49,6 @@ class AddCarToBlockChain extends Component {
 
             // Set Web3, accounts, and contract to the state, and then proceed with an
             // example of interacting with the contract's methods
-            this.listenToPaymentEvent();
             this.setState({ loaded: true });
         }
         catch(error) {
@@ -62,24 +61,11 @@ class AddCarToBlockChain extends Component {
         }  
     };
 
-    listenToPaymentEvent = () => {
-        let self = this;
-        this.carManager.events.SupplyChainStep().on("data", async function(event) {
-            console.log(event);
-            let carObj = await self.carManager.methods.cars(event.returnValues._carIndex).call();
-            console.log("methods");
-            console.log(self.carManager.methods);
-            console.log("carObj");
-            console.log(carObj);
-            alert("Car " + carObj._identifier + " was paid, delivery now!")
-        });
-      }
-
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;
-
+        
         console.log(event);
 
         this.setState({

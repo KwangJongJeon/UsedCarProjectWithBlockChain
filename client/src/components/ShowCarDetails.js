@@ -26,6 +26,8 @@ class ShowCarDetails extends Component {
             .catch(err => {
                 console.log("Error from ShowCarDetails");
             })
+
+            
     };
 
     onDeleteClick(id) {
@@ -130,6 +132,9 @@ class ShowCarDetails extends Component {
 
                         <div className="col-md-6">
                             <a className="btn btn-outline-secondary btn-lg btn-block" href={`/show-car/maintenance-receipt/${car.blockChainAddress}`}>정비 내역 보기</a>
+                        </div>
+                        <div className="col-md-6">
+                            <a className="btn btn-outline-success btn-lg btn-block" href={`/buy-car/${car.blockChainAddress}`}>구매하기</a>
                         </div>
                     </div>
                     {

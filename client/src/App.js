@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { NavBar, HomePage } from './components';
 import { AddCarToBlockChain, ShowCarDetails, SearchPart, ChargeCoin, ShowCarList, UpdateCarPostInfo} from './components';
-import { CarMaintenancePage, CarMaintenanceDetails } from './components';
+import { CarMaintenancePage, CarMaintenanceDetails, CarReceipt} from './components';
 import { LogIn, SignUp } from './components';
 import './App.css';
 
@@ -27,6 +27,7 @@ class App extends Component {
         <hr/>
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route path='/buy-car/:id' component={CarReceipt}/>
           <Route path='/buy-car' component={ShowCarList} />
           <Route exact path="/show-car/:id" component={ShowCarDetails}/>
           <Route path="/show-car/maintenance-receipt/:id" component={MaintenanceReceipt}/>

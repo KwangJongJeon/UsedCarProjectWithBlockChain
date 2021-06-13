@@ -17,11 +17,8 @@ import "./Car.sol";
 
 contract CarManager is Ownable{
     
-    enum SupplyChainState {Created, Paid, Delivered}
-    
-    // 2021-06-12
-    // _carIndexInStruct는 웹에서 값을 가져올 때 사용할 용도로 만든 편의성 변수로써
-    // 나중에 시간이 난다면 보다 좋은 구조로 바꿀 필요성이 있음
+    enum SupplyChainState{Created, Paid, Delivered} 
+       
     struct S_Car {
         Car _car;
         string _brand;
@@ -64,6 +61,7 @@ contract CarManager is Ownable{
     function triggerPayment(uint _carIndex) public payable {
         require(cars[_carIndex]._carPrice == msg.value, "Only full payments accepted");
         require(cars[_carIndex]._state == SupplyChainState.Created, "Item is further in the chain");
+        
         cars[_carIndex]._state = SupplyChainState.Paid;
         
         emit SupplyChainStep(_carIndex, uint(cars[_carIndex]._state), address(cars[_carIndex]._car));
