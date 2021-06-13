@@ -85,9 +85,8 @@ class CarReceipt extends Component {
                 alert("Error on Payment event!")
             }
             
-            
+            this.props.history.push('/');        
         })
-        
     }
 
     onChange = e => {

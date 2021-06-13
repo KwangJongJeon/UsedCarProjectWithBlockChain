@@ -101,6 +101,9 @@ class CarMaintenanceDetails extends Component {
                 .catch(err => {
                     console.log("Error on handleSubmit in CarMaintenanceDetails ")
                 })
+            
+            this.props.history.push('/maintenance-car');        
+
         }
     }
 

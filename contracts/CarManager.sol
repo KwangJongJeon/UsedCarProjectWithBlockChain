@@ -69,8 +69,8 @@ contract CarManager is Ownable{
     
     function triggerDelivery(uint _carIndex) public onlyOwner {
         require(cars[_carIndex]._state == SupplyChainState.Paid, "Item is further in the chain");
-        cars[_carIndex]._state = SupplyChainState.Delivered;
         
+        cars[_carIndex]._state = SupplyChainState.Delivered;
         emit SupplyChainStep(_carIndex, uint(cars[carIndex]._state), address(cars[_carIndex]._car));
     }
 

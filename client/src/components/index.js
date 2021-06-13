@@ -17,6 +17,7 @@ import ShowCarDetails from './ShowCarDetails'
 import UpdateCarPostInfo from './UpdateCarPostInfo'
 import CarReceipt from './CarReceipt'
 import DeliveryCarList from './DeliveryCarList'
+import DeliveryCarDetails from './DeliveryCarDetails';
 
 export {
     NavBar,
@@ -37,5 +38,6 @@ export {
     ShowCarDetails,
     UpdateCarPostInfo,
     CarReceipt,
-    DeliveryCarList
+    DeliveryCarList,
+    DeliveryCarDetails
 }
