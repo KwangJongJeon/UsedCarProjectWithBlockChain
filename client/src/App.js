@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
-import { NavBar, HomePage } from './components';
+import { NavBar, HomePage, DeliveryCarList } from './components';
 import { AddCarToBlockChain, ShowCarDetails, SearchPart, ChargeCoin, ShowCarList, UpdateCarPostInfo} from './components';
 import { CarMaintenancePage, CarMaintenanceDetails, CarReceipt} from './components';
 import { LogIn, SignUp } from './components';
@@ -39,6 +39,8 @@ class App extends Component {
           <Route exact path='/maintenance-car/:id' component={CarMaintenanceDetails}/>
           <Route path='/login' component={LogIn} />
           <Route path='/sign-up' component={SignUp} />
+          <Route path='/delivery-car' component = {DeliveryCarList}/>
+
 
           <Route path='/create-book' component={CreateBook} />
           <Route path='/edit-book/:id' component={UpdateBookInfo} />

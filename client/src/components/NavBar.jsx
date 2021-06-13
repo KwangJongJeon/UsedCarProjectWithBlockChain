@@ -17,7 +17,7 @@ class NavBar extends Component {
             <li><a href="/buy-car" className="nav-link px-2 text-white">구매</a></li>
             <li><a href="/sell-car" className="nav-link px-2 text-white">판매</a></li>
             <li><a href="/maintenance-car" className="nav-link px-2 text-white">정비</a></li>
-            <li><a href="/add-coin" className="nav-link px-2 text-white">코인충전</a></li>
+            <li><a href="/delivery-car" className="nav-link px-2 text-white">차량배달</a></li>
             <li><a href="/search-part" className="nav-link px-2 text-white">부품검색</a></li>
           </ul>
 

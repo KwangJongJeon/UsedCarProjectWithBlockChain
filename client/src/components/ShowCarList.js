@@ -37,7 +37,7 @@ class ShowCarList extends Component {
         else {
             console.log("cars: ",cars)
             carList = cars.map((car, k) => {
-                if(car.isInitialInspected) {
+                if(car.isInitialInspected && car.supplyState === "Created") {
                     return <CarCard car={car} key={k} />
                 }
                 else {

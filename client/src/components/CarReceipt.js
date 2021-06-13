@@ -67,7 +67,25 @@ class CarReceipt extends Component {
             console.log(event.returnValues._step);
             console.log("car in event function: ");
             console.log(this.car);
-            alert("Car was paid, delivery now!");
+
+            if(event.returnValues._step === "1") {
+                axios
+                    .put("http://localhost:8082/api/sellCarPosts/setSupplyStateToPaid/" + event.returnValues._carAddress)
+                    .then(res => {
+                        console.log("res--------------------------")
+                        console.log(res);
+                        console.log("-----------------------------")
+                    })
+                    .catch(err => {
+                        console.log("Error on handleSubmit in CarReceipt ")
+                    })
+                alert("Car was paid, delivery now!");
+            }
+            else {
+                alert("Error on Payment event!")
+            }
+            
+            
         })
         
     }
