@@ -1,54 +1,72 @@
-// 부품 검색 페이지.
-
 import React, { Component } from 'react';
+import '../App.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import PartCard from './PartCard';
 
 class SearchPart extends Component {
-    
-    // 변수의 초기값을 state로 정의.
-    state = {
-        part_Name: '',
-    }
-    // 외부에서 입력값이 들어올 경우 state 값을 변경.
-    appChange = (e) => {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      parts: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:8082/api/parts')
+      .then(res => {
         this.setState({
-        [e.target.name]: e.target.value
-        });
+          parts: res.data
+        })
+      })
+      .catch(err =>{
+        console.log('Error from Show Part List');
+      })
+  };
+
+
+  render() {
+    const parts = this.state.parts;
+    console.log("Print Part: " + parts);
+    let partList;
+
+    if(!parts) {
+      partList = "there is no part recored!";
+    } else {
+      partList = parts.map((part, k) =>
+        <PartCard part={ part } key={k} />
+      );
     }
-    // 클릭 이벤트.
-    appClick = () => {
-        // part_Name이 입력되지 않았을 경우.
-        if (this.state.part_Name === '') {
-            alert("부품명을 입력하세요.");    
-            return;
-        }
-    }
 
-    render() {
-
-        {/* 위에서 정의한 state와 함수를 재정의 */}
-        const { part } = this.state;
-        const { appChange, appClick } = this;
-
-        return (
-            <div className="Part">
-                <div className="container col-xxl-10 px-5 py-5">
-                    <div className="col-lg-4">
-                    
-                        <h3>부품 검색 화면</h3>
-
-                        <div className="div-style1">
-                            <h6>검색하실 부품의 이름을 입력해주세요.</h6>
-                            <input type="text" className="form-control" name="part" placeholder="검색할 부품명" value={part} onChange={appChange} />
-                        </div>
-
-                        <div className="div-style1">
-                            <button className="btn btn-primary form-control" onClick={appClick}>부품 검색</button>
-                        </div>
-                    </div>
-                </div>
+    return (
+      <div className="ShowPartList">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <br />
+              <h2 className="display-4 text-center">Parts List</h2>
             </div>
-        );
-    }
+
+            <div className="col-md-11">
+              <Link to="/create-part" className="btn btn-outline-warning float-right">
+                + Add New Part
+              </Link>
+              <br />
+              <br />
+              <hr />
+            </div>
+
+          </div>
+
+          <div className="list">
+                { partList }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default SearchPart;

@@ -8,12 +8,6 @@ import { CarMaintenancePage, CarMaintenanceDetails, CarReceipt} from './componen
 import { LogIn, SignUp } from './components';
 import './App.css';
 
-import CreateBook from './components/CreateBook.js';
-import ShowBookList from './components/ShowBookList';
-import ShowBookDetails from './components/ShowBookDetails';
-import UpdateBookInfo from './components/UpdateBookInfo';
-import ShowBlockChainDetails from './components/ShowBlockChainDetails'
-
 import {SellPage} from './components';
 import MaintenanceReceipt from './components/MaintenanceReceipt';
 
@@ -42,11 +36,6 @@ class App extends Component {
           <Route path='/delivery-car/:id' component = {DeliveryCarDetails}/>
           <Route path='/delivery-car' component = {DeliveryCarList}/>
 
-
-          <Route path='/create-book' component={CreateBook} />
-          <Route path='/edit-book/:id' component={UpdateBookInfo} />
-          <Route exact path='/show-book/:id' component={ShowBookDetails} />
-          <Route path='/book-list' component={ShowBookList}/>
         </Switch>
       </Router>
     ) 
